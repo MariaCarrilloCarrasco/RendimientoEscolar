@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendimiento Escolar - Cronómetro Inclusivo</title>
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Iconos para Pictogramas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    
+    <!-- Animación de fondo Abstracto -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <div class="app-layout">
+        <div class="app-container glass-panel">
+            
+            <!-- HEADER: Controles de accesibilidad e idiomas -->
+            <header class="top-bar">
+                <div class="lang-selector">
+                    <select id="language-select">
+                        <option value="es">🇪🇸 Español</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="fr">🇫🇷 Français</option>
+                    </select>
+                </div>
+                
+                <div class="accessibility-controls">
+                    <button id="btn-tdah" class="glass-btn" title="Modo TDAH / Menores (Tiempos cortos)"><i class="fa-solid fa-child"></i> <span data-i18n="mode_tdah">Modo TDAH</span></button>
+                    <button id="btn-sign" class="glass-btn" title="Modo Dactilológico"><i class="fa-solid fa-hands"></i> <span data-i18n="mode_sign">Dactilológico</span></button>
+                    <button id="btn-voice-read" class="glass-btn" title="Leer pantalla en voz alta"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </header>
+
+            <!-- SECCIÓN DE OBJETIVOS -->
+            <section class="goal-section">
+                <h2 data-i18n="goal_title" class="section-title">Mi Objetivo de Estudio</h2>
+                <div class="goal-input-container">
+                    <input type="text" id="goal-input" data-i18n-placeholder="goal_placeholder" placeholder="Ej: Leer 2 capítulos de historia...">
+                    <button id="btn-mic" class="glass-btn icon-btn" title="Dictar por voz"><i class="fa-solid fa-microphone"></i></button>
+                </div>
+                
+                <!-- Selector Rápido por Pictogramas -->
+                <div class="pictogram-selector">
+                    <p data-i18n="picto_title">O elige con pictogramas:</p>
+                    <div class="picto-grid">
+                        <button class="picto-btn glass-btn" onclick="setGoal('Leer', 'fa-book-open')"><i class="fa-solid fa-book-open"></i></button>
+                        <button class="picto-btn glass-btn" onclick="setGoal('Escribir', 'fa-pen')"><i class="fa-solid fa-pen"></i></button>
+                        <button class="picto-btn glass-btn" onclick="setGoal('Matemáticas', 'fa-calculator')"><i class="fa-solid fa-calculator"></i></button>
+                        <button class="picto-btn glass-btn" onclick="setGoal('Programar', 'fa-laptop-code')"><i class="fa-solid fa-laptop-code"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DEL TEMPORIZADOR -->
+            <section class="timer-section">
+                <div class="mode-selector">
+                    <button id="mode-pomodoro" class="glass-btn active" data-i18n="mode_pomodoro">Pomodoro (25m)</button>
+                    <button id="mode-shortbreak" class="glass-btn" data-i18n="mode_short_break">Descanso (5m)</button>
+                </div>
+
+                <div class="timer-display glass-panel-inner">
+                    <span id="time-left">25:00</span>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="btn-start" class="glass-btn primary-btn"><i class="fa-solid fa-play"></i> <span data-i18n="btn_start">Empezar</span></button>
+                    <button id="btn-pause" class="glass-btn"><i class="fa-solid fa-pause"></i> <span data-i18n="btn_pause">Pausar</span></button>
+                    <button id="btn-reset" class="glass-btn"><i class="fa-solid fa-rotate-right"></i> <span data-i18n="btn_reset">Reiniciar</span></button>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE CALENDARIO Y PROGRESO -->
+            <section class="calendar-section glass-panel-inner">
+                <h3 data-i18n="calendar_title"><i class="fa-regular fa-calendar-check"></i> Mi Plan Semanal</h3>
+                <div class="week-grid" id="week-grid">
+                    <!-- Generado por JS -->
+                </div>
+            </section>
+
+        </div>
+
+        <aside class="customizer-panel glass-panel">
+            <h3>Personalizar</h3>
+            <label>
+                <span>Fondo</span>
+                <input id="theme-bg-color" type="color" value="#0f172a">
+            </label>
+            <label>
+                <span>Letras</span>
+                <input id="theme-text-color" type="color" value="#f8fafc">
+            </label>
+            <label>
+                <span>Botones</span>
+                <input id="theme-button-color" type="color" value="#6366f1">
+            </label>
+            <label>
+                <span>Tamaño de letra</span>
+                <input id="theme-font-size" type="range" min="14" max="22" step="1" value="16">
+            </label>
+            <button id="theme-reset" class="glass-btn" type="button">Restablecer</button>
+        </aside>
+    </div>
+
+    <!-- Audio para Aplausos -->
+    <audio id="applause-audio" src="https://cdn.freesound.org/previews/104/104886_1114674-lq.mp3" preload="auto"></audio>
+
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
