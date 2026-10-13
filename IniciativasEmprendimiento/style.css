@@ -1,0 +1,94 @@
+/* ------------------------------
+   ESTILOS GENERALES
+--------------------------------*/
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f7f7f7;
+  color: #222;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ------------------------------
+   HEADER
+--------------------------------*/
+header {
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  color: #222;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+header p {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ------------------------------
+   NAVEGACIÓN
+--------------------------------*/
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.6;
+}
+
+/* ------------------------------
+   CONTENEDOR PRINCIPAL
+--------------------------------*/
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+/* ------------------------------
+   SECCIONES
+--------------------------------*/
+section {
+  margin-bottom: 3rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 700;
+}
+
+/* ------------------------------
+   VIDEOS
+--------------------------------*/
+.video-wrapper {
+  position: relative;
+  padding-bottom
