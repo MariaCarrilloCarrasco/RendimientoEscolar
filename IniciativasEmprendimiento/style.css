@@ -91,4 +91,10 @@ section h2 {
 --------------------------------*/
 .video-wrapper {
   position: relative;
-  padding-bottom
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  margin-top: 1rem;
+}
